@@ -96,24 +96,36 @@ function ApproveTimeSection({ month }: { month: string }) {
 	return (
 		<View style={styles.section}>
 			<Text style={styles.tableHeader}>Approved Time</Text>
-			<View style={[styles.flexRow, { fontSize: 10 }]}>
-				<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>Role</Text>
-				<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>Employee</Text>
-				<View
-					style={[styles.flexColumn, { border: "1px solid #a8a8a8", flex: 9 }]}
+			<View style={[styles.tableRow, styles.tableFontSize]}>
+				<Text
+					style={[styles.tableCell, styles.tableBorderLeftBottom, { flex: 1 }]}
 				>
-					<Text style={[{ textAlign: "center", border: "1px solid #a8a8a8" }]}>
+					Role
+				</Text>
+				<Text
+					style={[styles.tableCell, styles.tableBorderLeftBottom, { flex: 1 }]}
+				>
+					Employee
+				</Text>
+				<View style={[styles.tableColumn, { flex: 9 }]}>
+					<Text
+						style={[
+							styles.tableCell,
+							styles.tableBorderLeftBottom,
+							{ textAlign: "center" },
+						]}
+					>
 						Day
 					</Text>
-					<View style={[styles.flexRow]}>
+					<View style={styles.tableRow}>
 						{/* loop days */}
 						{Array.from({ length: numberOfDays }).map((_, index) => (
 							<Text
 								key={index}
 								style={[
+									styles.tableBorderLeftBottom,
 									{
 										flex: 1,
-										border: "1px solid #a8a8a8",
 										textAlign: "center",
 										padding: 2,
 									},
@@ -124,20 +136,45 @@ function ApproveTimeSection({ month }: { month: string }) {
 						))}
 					</View>
 				</View>
-				<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>Days</Text>
+				<Text
+					style={[
+						styles.tableCell,
+						styles.tableBorderLeftBottom,
+						styles.tableBorderRight,
+						{ flex: 1 },
+					]}
+				>
+					Days
+				</Text>
 			</View>
 
 			{data.map((item) => (
-				<View style={[styles.flexRow, { fontSize: 10 }]}>
-					<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>
+				<View
+					style={[
+						styles.tableRow,
+						styles.tableFontSize,
+						styles.tableBorderRight,
+					]}
+				>
+					<Text
+						style={[
+							styles.tableCell,
+							styles.tableBorderLeftBottom,
+							{ flex: 1 },
+						]}
+					>
 						{item.role}
 					</Text>
-					<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>
+					<Text
+						style={[
+							styles.tableCell,
+							styles.tableBorderLeftBottom,
+							{ flex: 1 },
+						]}
+					>
 						{item.employee}
 					</Text>
-					<View
-						style={[styles.flexRow, { border: "1px solid #a8a8a8", flex: 9 }]}
-					>
+					<View style={[styles.tableRow, { flex: 9 }]}>
 						{Array.from({ length: numberOfDays }).map((_, index) => {
 							const day = item.days.find(
 								(d) => dayjs(d.date).date() === index + 1
@@ -146,9 +183,9 @@ function ApproveTimeSection({ month }: { month: string }) {
 								<Text
 									key={index}
 									style={[
+										styles.tableBorderLeftBottom,
 										{
 											flex: 1,
-											border: "1px solid #a8a8a8",
 											textAlign: "center",
 											padding: 2,
 										},
@@ -159,7 +196,13 @@ function ApproveTimeSection({ month }: { month: string }) {
 							);
 						})}
 					</View>
-					<Text style={[{ border: "1px solid #a8a8a8", flex: 1 }]}>
+					<Text
+						style={[
+							styles.tableCell,
+							styles.tableBorderLeftBottom,
+							{ flex: 1 },
+						]}
+					>
 						{item.total_days}
 					</Text>
 				</View>
